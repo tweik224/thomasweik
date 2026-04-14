@@ -45,15 +45,10 @@ npm run preview
 
 ### 1) Set the Vite `base` path
 
-Edit `vite.config.ts` and set:
-
-- For user/org site (`https://<user>.github.io/`): `base: '/'`
-- For project site (`https://<user>.github.io/<repo>/`): `base: '/<repo>/'`
-
-Current default is:
+This repo uses a relative base so GitHub Pages works for both user and project sites:
 
 ```ts
-base: '/'
+base: './'
 ```
 
 ### 2) Build and deploy `dist`
