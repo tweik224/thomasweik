@@ -224,7 +224,7 @@ export function HomePage() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 pb-16 pt-5 md:px-12 lg:px-16">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 pb-16 pt-4 md:px-12 lg:px-16">
         <Navbar
           sections={navSections}
           activeSection={activeSection}
@@ -235,34 +235,34 @@ export function HomePage() {
 
         <main>
           <div>
-            <section className="relative scroll-mt-32 overflow-hidden py-20 text-center md:py-24" id="hero">
+            <section className="relative scroll-mt-32 overflow-hidden py-12 text-center md:py-24" id="hero">
               <div
                 ref={heroShapeLeftRef}
                 aria-hidden="true"
-                className="pointer-events-none absolute -left-16 top-2 h-56 w-56 rounded-full bg-sky-200/45 blur-3xl"
+                className="pointer-events-none absolute -left-16 top-2 hidden h-56 w-56 rounded-full bg-sky-200/45 blur-3xl md:block"
               />
               <div
                 ref={heroShapeRightRef}
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-12 top-24 h-72 w-72 rounded-full bg-[#d7e8ff]/55 blur-3xl"
+                className="pointer-events-none absolute -right-12 top-24 hidden h-72 w-72 rounded-full bg-[#d7e8ff]/55 blur-3xl md:block"
               />
               <div className="mx-auto flex max-w-5xl flex-col items-center">
                 <h1
-                  className="reveal reveal--distance-sm text-6xl font-bold tracking-tight text-ink md:text-8xl"
+                  className="reveal reveal--distance-sm text-4xl font-bold tracking-tight text-ink sm:text-5xl md:text-8xl"
                   data-animate
                 >
                   {person.name}
                 </h1>
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+                <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5 md:mt-8 md:gap-3.5">
                   <p
-                    className="reveal reveal--delay1 reveal--distance-sm inline-flex rounded-full border border-white/70 bg-white/60 px-6 py-2 text-xl font-semibold text-sky-700 shadow-soft backdrop-blur-sm md:text-2xl"
+                    className="reveal reveal--delay1 reveal--distance-sm inline-flex rounded-full border border-white/70 bg-white/60 px-4 py-2 text-sm font-semibold text-sky-700 shadow-soft backdrop-blur-sm sm:px-5 sm:text-lg md:px-6 md:text-2xl"
                     data-animate
                   >
                     {person.badge}
                   </p>
                   {person.secondaryBadge ? (
                     <p
-                      className="reveal reveal--delay1 reveal--distance-sm inline-flex rounded-full border border-white/70 bg-white/60 px-6 py-2 text-xl font-semibold text-sky-700 shadow-soft backdrop-blur-sm md:text-2xl"
+                      className="reveal reveal--delay1 reveal--distance-sm inline-flex rounded-full border border-white/70 bg-white/60 px-4 py-2 text-sm font-semibold text-sky-700 shadow-soft backdrop-blur-sm sm:px-5 sm:text-lg md:px-6 md:text-2xl"
                       data-animate
                     >
                       {person.secondaryBadge}
@@ -270,21 +270,21 @@ export function HomePage() {
                   ) : null}
                 </div>
               </div>
-              <div className="mx-auto mt-16 max-w-4xl">
+              <div className="mx-auto mt-10 max-w-4xl md:mt-16">
                 <p
-                  className="reveal reveal--delay2 text-2xl leading-relaxed text-body md:text-[2.15rem]/[1.4]"
+                  className="reveal reveal--delay2 text-lg leading-relaxed text-body sm:text-xl md:text-[2.15rem]/[1.4]"
                   data-animate
                 >
                   {person.summary}
                 </p>
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8 md:gap-4">
                   <a
                     href="#contact"
                     onClick={(event) => {
                       event.preventDefault()
                       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
                     }}
-                    className="pressable reveal reveal--delay2 rounded-full border border-sky-200 bg-sky-500 px-10 py-4 text-2xl font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                    className="pressable reveal reveal--delay2 rounded-full border border-sky-200 bg-sky-500 px-6 py-3 text-base font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 md:px-10 md:py-4 md:text-2xl"
                     data-animate
                     aria-label="Go to contact section"
                   >
@@ -296,7 +296,7 @@ export function HomePage() {
                       event.preventDefault()
                       document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
                     }}
-                    className="pressable reveal reveal--delay2 rounded-full border border-white/80 bg-white/75 px-10 py-4 text-2xl font-bold text-ink transition-all hover:-translate-y-0.5 hover:border-sky-200 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
+                    className="pressable reveal reveal--delay2 rounded-full border border-white/80 bg-white/75 px-6 py-3 text-base font-bold text-ink transition-all hover:-translate-y-0.5 hover:border-sky-200 hover:text-sky-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 md:px-10 md:py-4 md:text-2xl"
                     data-animate
                     aria-label="Go to projects section"
                   >
