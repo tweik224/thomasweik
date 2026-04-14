@@ -38,6 +38,16 @@ const navSections = [
 ]
 
 const skillAccentClasses = ['bg-sky-400', 'bg-sky-500', 'bg-[#3f8edb]', 'bg-[#2f6fb8]']
+const projectTileOrder = [
+  'sae-aero-design',
+  'robotic-arm-vision-pick',
+  'fpv-drone-build',
+  'ares-muav-endurance-uav',
+  'cubesat-development',
+  'loc-iris-model-rocket',
+  'portfolio-website',
+  'menzi-muck-m220x-reverse-engineering'
+]
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max)
 
@@ -170,8 +180,13 @@ export function HomePage() {
   }, [reducedMotion])
 
   const filteredProjects = useMemo(() => {
-    if (filter === 'All') return projects
-    return projects.filter((project) => project.categories.includes(filter))
+    const orderedProjects = [...projects].sort(
+      (left, right) =>
+        projectTileOrder.indexOf(left.slug) - projectTileOrder.indexOf(right.slug)
+    )
+
+    if (filter === 'All') return orderedProjects
+    return orderedProjects.filter((project) => project.categories.includes(filter))
   }, [filter])
 
   const availableProjectCategories = useMemo(() => {
@@ -360,7 +375,7 @@ export function HomePage() {
               <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-4">
                 {filteredProjects.map((project, index) => (
                   <div
-                    key={project.title}
+                    key={project.slug}
                     className="reveal reveal-card"
                     data-animate
                     style={{ transitionDelay: `${Math.min(index * 70, 280)}ms` }}

@@ -472,6 +472,44 @@ export const projects: ProjectItem[] = [
     ]
   },
   {
+    slug: 'fpv-drone-build',
+    title: '5" FPV Drone Build',
+    role: 'Builder & Flight Systems Integrator',
+    organization: 'Personal Project',
+    dates: 'Personal Project',
+    description:
+      'Custom 5-inch FPV quadcopter build with component selection, full assembly, firmware setup, and radio integration.',
+    overview:
+      'I built a complete 5-inch FPV platform, selected the hardware stack, wired the system, and brought it online through firmware configuration and radio binding.',
+    bullets: [
+      'Selected and integrated key components including a SpeedyBee Master 5 V2 frame, F722 FC stack with 80A 4-in-1 ESC, iFlight Xing2 2207 motors, and Caddx Ratel 2 camera.',
+      'Flashed firmware, completed setup and checks, and bound a Radiomaster Pocket controller.'
+    ],
+    fullDetails: [
+      'Built the airframe and powertrain from the ground up with component matching focused on reliability and performance.',
+      'Configured flight electronics and validated control-link setup after flashing FC firmware and completing bench checks.',
+      'Prepared the platform for future autonomy work using iNav waypoint navigation for GPS-based missions.'
+    ],
+    categories: ['UAS', 'Mechatronics', 'Software'],
+    tags: ['FPV Systems', 'Betaflight', 'iNav', 'Flight Controller', 'ELRS', 'RC Integration'],
+    visual: 'from-[#e8f2ff] to-[#d8e9ff]',
+    coverImage: fpvAssemblingPhoto,
+    coverAlt: 'Assembling FPV drone electronics onto the frame',
+    coverPosition: 'object-[center_80%]',
+    media: [
+      {
+        src: fpvAssemblingPhoto,
+        alt: 'Assembling FPV drone electronics onto the frame',
+        caption: 'Assembling the electronics stack onto the frame'
+      },
+      {
+        src: fpvBetaflightPhoto,
+        alt: 'Installing Betaflight firmware on the FPV drone',
+        caption: 'Installing Betaflight firmware and configuring the build'
+      }
+    ]
+  },
+  {
     slug: 'cubesat-development',
     title: 'CubeSat Development',
     role: 'Embedded Systems Lead',
@@ -515,6 +553,53 @@ export const projects: ProjectItem[] = [
         src: cubesatGroupPhoto,
         alt: 'CubeSat team photo at showcase',
         caption: 'CubeSat team photo at the project showcase'
+      }
+    ]
+  },
+  {
+    slug: 'loc-iris-model-rocket',
+    title: 'Loc Iris Model Rocket',
+    role: 'Builder',
+    organization: 'Personal Project',
+    dates: 'Mar 2026 - Present',
+    cardDates: 'In Progress',
+    description:
+      'Built a Loc Iris model rocket to pursue NAR Level 1 high powered rocketry certification.',
+    overview:
+      'I assembled the rocket and reinforced the fins with fiberglass in preparation for upcoming certification launches.',
+    bullets: [
+      'Assembled the Loc Iris model rocket for NAR Level 1 certification preparation.',
+      'Fiberglassed the fins to improve reinforcement and durability.',
+      'Prepared the rocket for launch operations planned over the coming months.'
+    ],
+    fullDetails: [
+      'Built the rocket as a certification-focused project for NAR Level 1 high powered rocketry.',
+      'Applied fiberglass reinforcement to the fins to improve strength and flight durability.',
+      'Project remains in progress as of March 2026, with launch and certification attempts planned in the coming months.'
+    ],
+    categories: ['Mechanical Design', 'Manufacturing'],
+    tags: ['Model Rocketry', 'Fiberglassing', 'Assembly', 'Certification'],
+    visual: 'from-[#fff2e6] to-[#ffe0c6]',
+    coverImage: locIrisFinFiberglassingPhoto,
+    coverAlt: 'Fiberglassing the fins on the Loc Iris model rocket',
+    media: [
+      {
+        src: locIrisFinFiberglassingPhoto,
+        alt: 'Fiberglassing the fins on the Loc Iris model rocket',
+        caption: 'Fiberglass reinforcement on the fins',
+        layout: 'landscape'
+      },
+      {
+        src: locIrisDryfitAssemblyPhoto,
+        alt: 'Dry fit assembly of the Loc Iris rocket',
+        caption: 'Dry fit assembly of the rocket',
+        layout: 'portrait'
+      },
+      {
+        src: locIrisMotorMountAssemblyPhoto,
+        alt: 'Motor mount assembly of the Loc Iris rocket post epoxy',
+        caption: 'Motor mount assembly after epoxy',
+        layout: 'landscape'
       }
     ]
   },
@@ -563,91 +648,6 @@ export const projects: ProjectItem[] = [
         src: robotArmControlPhoto,
         alt: 'Duet board with Raspberry Pi for the robot arm',
         caption: 'Duet board with Raspberry Pi control stack',
-        layout: 'landscape'
-      }
-    ]
-  },
-  {
-    slug: 'fpv-drone-build',
-    title: '5" FPV Drone Build',
-    role: 'Builder & Flight Systems Integrator',
-    organization: 'Personal Project',
-    dates: 'Personal Project',
-    description:
-      'Custom 5-inch FPV quadcopter build with component selection, full assembly, firmware setup, and radio integration.',
-    overview:
-      'I built a complete 5-inch FPV platform, selected the hardware stack, wired the system, and brought it online through firmware configuration and radio binding.',
-    bullets: [
-      'Selected and integrated key components including a SpeedyBee Master 5 V2 frame, F722 FC stack with 80A 4-in-1 ESC, iFlight Xing2 2207 motors, and Caddx Ratel 2 camera.',
-      'Flashed firmware, completed setup and checks, and bound a Radiomaster Pocket controller.'
-    ],
-    fullDetails: [
-      'Built the airframe and powertrain from the ground up with component matching focused on reliability and performance.',
-      'Configured flight electronics and validated control-link setup after flashing FC firmware and completing bench checks.',
-      'Prepared the platform for future autonomy work using iNav waypoint navigation for GPS-based missions.'
-    ],
-    categories: ['UAS', 'Mechatronics', 'Software'],
-    tags: ['FPV Systems', 'Betaflight', 'iNav', 'Flight Controller', 'ELRS', 'RC Integration'],
-    visual: 'from-[#e8f2ff] to-[#d8e9ff]',
-    coverImage: fpvAssemblingPhoto,
-    coverAlt: 'Assembling FPV drone electronics onto the frame',
-    coverPosition: 'object-[center_80%]',
-    media: [
-      {
-        src: fpvAssemblingPhoto,
-        alt: 'Assembling FPV drone electronics onto the frame',
-        caption: 'Assembling the electronics stack onto the frame'
-      },
-      {
-        src: fpvBetaflightPhoto,
-        alt: 'Installing Betaflight firmware on the FPV drone',
-        caption: 'Installing Betaflight firmware and configuring the build'
-      }
-    ]
-  },
-  {
-    slug: 'loc-iris-model-rocket',
-    title: 'Loc Iris Model Rocket',
-    role: 'Builder',
-    organization: 'Personal Project',
-    dates: 'Mar 2026 - Present',
-    cardDates: 'In Progress',
-    description:
-      'Built a Loc Iris model rocket to pursue NAR Level 1 high powered rocketry certification.',
-    overview:
-      'I assembled the rocket and reinforced the fins with fiberglass in preparation for upcoming certification launches.',
-    bullets: [
-      'Assembled the Loc Iris model rocket for NAR Level 1 certification preparation.',
-      'Fiberglassed the fins to improve reinforcement and durability.',
-      'Prepared the rocket for launch operations planned over the coming months.'
-    ],
-    fullDetails: [
-      'Built the rocket as a certification-focused project for NAR Level 1 high powered rocketry.',
-      'Applied fiberglass reinforcement to the fins to improve strength and flight durability.',
-      'Project remains in progress as of March 2026, with launch and certification attempts planned in the coming months.'
-    ],
-    categories: ['Mechanical Design', 'Manufacturing'],
-    tags: ['Model Rocketry', 'Fiberglassing', 'Assembly', 'Certification'],
-    visual: 'from-[#fff2e6] to-[#ffe0c6]',
-    coverImage: locIrisFinFiberglassingPhoto,
-    coverAlt: 'Fiberglassing the fins on the Loc Iris model rocket',
-    media: [
-      {
-        src: locIrisFinFiberglassingPhoto,
-        alt: 'Fiberglassing the fins on the Loc Iris model rocket',
-        caption: 'Fiberglass reinforcement on the fins',
-        layout: 'landscape'
-      },
-      {
-        src: locIrisDryfitAssemblyPhoto,
-        alt: 'Dry fit assembly of the Loc Iris rocket',
-        caption: 'Dry fit assembly of the rocket',
-        layout: 'portrait'
-      },
-      {
-        src: locIrisMotorMountAssemblyPhoto,
-        alt: 'Motor mount assembly of the Loc Iris rocket post epoxy',
-        caption: 'Motor mount assembly after epoxy',
         layout: 'landscape'
       }
     ]
