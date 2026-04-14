@@ -15,7 +15,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <img
             src={project.coverImage}
             alt={project.coverAlt ?? `${project.title} cover`}
-            className={`h-full w-full object-cover ${project.coverPosition ?? 'object-center'}`}
+            className={`h-full w-full ${
+              project.coverFit === 'contain' ? 'object-contain' : 'object-cover'
+            } ${project.coverPosition ?? 'object-center'}`}
             loading="lazy"
           />
         </div>
@@ -30,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="text-2xl font-bold leading-tight text-ink">{project.title}</h3>
         <p className="text-base font-semibold text-sky-700">{project.role}</p>
         <p className="text-base text-body">
-          {project.organization} · {project.dates}
+          {project.organization} · {project.cardDates ?? project.dates}
         </p>
         <p className="text-base leading-relaxed text-body">{project.description}</p>
       </div>

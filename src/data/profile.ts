@@ -16,10 +16,16 @@ import aresExplodedViewPhoto from '../assets/ARESUAVexplodedviewofStructure.jpg'
 import saeMovingPlanePhoto from '../assets/SAEAeroMovingPlaneCompetitionday.jpg'
 import saeGroupPhoto from '../assets/SAEAeroGroupPicturecompetitionday.jpg'
 import saeFullGroupPhoto from '../assets/SAEAeroFullGroupphotoAfterFlight.jpg'
-import speakerIsometricPhoto from '../assets/SpeakerboxIsometricView.jpeg'
-import speakerTopDownPhoto from '../assets/SpeakerboxTopdownviewoflasercuttop.jpeg'
+import locIrisDryfitAssemblyPhoto from '../assets/LocIrisDryfitAssembly.jpg'
+import locIrisFinFiberglassingPhoto from '../assets/LocIrisFinFiberglassing.jpeg'
+import locIrisMotorMountAssemblyPhoto from '../assets/LocIrisMotorMountAssemblyPostEpoxy.jpeg'
+import robotArmCADPhoto from '../assets/RobotArmCADModel.png'
+import robotArmBuildPhoto from '../assets/RobotArm.jpeg'
+import robotArmControlPhoto from '../assets/RobotArmDuetBoardwithRaspberryPi.jpg'
 import portfolioCoverPhoto from '../assets/PortfolioWebsiteCoverpage.jpeg'
 import portfolioBackendPhoto from '../assets/PortfolioWebsiteSampleBackendscreenshotwithcodex.jpeg'
+import menziMuckOverviewDrawingPhoto from '../assets/MenziMuckoverviewDrawing.jpeg'
+import menziMuckClawDrawingPhoto from '../assets/MenziMuckClawDrawing.jpeg'
 
 export type ProjectCategory =
   | 'Defense'
@@ -71,6 +77,7 @@ export interface ProjectItem {
   role: string
   organization: string
   dates: string
+  cardDates?: string
   description: string
   overview: string
   bullets: string[]
@@ -81,7 +88,8 @@ export interface ProjectItem {
   coverImage?: string
   coverAlt?: string
   coverPosition?: string
-  media?: Array<{ src: string; alt: string; caption: string }>
+  coverFit?: 'cover' | 'contain'
+  media?: Array<{ src: string; alt: string; caption: string; layout?: 'portrait' | 'landscape' }>
   mediaPlaceholders?: string[]
 }
 
@@ -112,9 +120,9 @@ export interface Award {
 export const person: Person = {
   name: 'Thomas Weik',
   badge: 'Mechanical Engineer',
-  secondaryBadge: 'USCG 100 GRT Captain',
+  secondaryBadge: '',
   summary:
-    'Hands-on mechanical engineering student focused on UAS/CubeSat integration, embedded hardware bring-up, and practical systems work.',
+    'Mechanical engineering student focused on UAV systems, mechatronics, embedded hardware integration, and prototype development.',
   citizenship: 'US Citizen',
   location: 'Melbourne, Florida / Sayville, New York'
 }
@@ -139,10 +147,10 @@ export const links: LinkItem[] = [
 
 export const about = {
   short:
-    'Mechanical Engineering student focused on system integration, embedded hardware, and real-world operations. Graduating Spring 2027.',
+    'Mechanical Engineering student focused on UAV systems, mechatronics, embedded hardware integration, and CAD-driven prototyping. Graduating Spring 2027.',
   long: [
-    'Mechanical Engineering student at Florida Institute of Technology with a Nanotechnology minor. I like work that involves building, testing, and fixing real hardware.',
-    'My experience spans CubeSat flight-computer bring-up, UAV integration, and maritime operations where I’m responsible for equipment, navigation, and operational decisions.'
+    'Mechanical engineering student at Florida Institute of Technology with a Nanotechnology minor, focused on applying coursework in mechanics, controls, and systems design to hands-on engineering projects.',
+    'My work spans UAV integration, embedded hardware, CAD modeling, fabrication, and testing, with a strong interest in building reliable systems from concept through prototype.'
   ]
 }
 
@@ -158,7 +166,7 @@ export const siteContent = {
     'Interested in collaborating or discussing opportunities? Feel free to reach out through any of these channels.',
   contactAvailability:
     'Available for internships, research collaborations, and engineering project opportunities.',
-  focusAreas: ['UAS Systems Integration', 'Embedded Systems', 'Mechanical Design', 'Maritime Operations']
+  focusAreas: ['UAS Systems Integration', 'Embedded Systems', 'Mechanical Design', 'Mechatronics']
 }
 
 export const skills: SkillGroup[] = [
@@ -294,7 +302,7 @@ export const experience: ExperienceItem[] = [
     imageAlt: 'At the helm of the Fire Island Seahorse freight vessel',
     location: 'Sayville, NY',
     type: 'On-site, Seasonal',
-    dates: 'Jun 2024 - May 2025',
+    dates: 'Jun 2019 - May 2025',
     bullets: ['Handled self-paced lot upkeep and facility support tasks.']
   },
 ]
@@ -377,49 +385,46 @@ export const leadership: ExperienceItem[] = [
 
 export const projects: ProjectItem[] = [
   {
-    slug: 'cubesat-development',
-    title: 'CubeSat Development',
-    role: 'Embedded Systems Lead',
-    organization: 'Florida Institute of Technology',
-    dates: 'Aug 2025 - Present',
+    slug: 'sae-aero-design',
+    title: 'SAE Aero Design',
+    role: 'Structures Subteam Member',
+    organization: 'SAE Aero Design',
+    dates: 'Competition Season',
     description:
-      'Flight-computer assembly and embedded bring-up for a CubeSat, from PCB build through processor configuration.',
+      'Structural design support and hands-on fabrication for a competition aircraft, with a focus on compliance and build quality.',
     overview:
-      'I built and validated the CubeSat flight computer, handling PCB assembly, processor bring-up, and early embedded setup for mission readiness.',
+      'On the Structures Subteam, I helped drive CAD decisions and built hardware that stayed compliant, manufacturable, and test-ready.',
     bullets: [
-      'Hand-assembled and reflow-soldered the flight computer PCB with microscope inspection and fine-pitch alignment.',
-      'Integrated the Octavo OSD3358-SM-RED SiP, configured bootloaders, and validated initial AM335x bring-up using open-source tools.'
+      'Collaborated on structural CAD design to satisfy competition requirements and keep geometry manufacturable.',
+      'Led hands-on assembly and fabrication, including servo testing, harness routing, carbon-fiber rod cutting, and CO2 laser-cut tail components.',
+      'Validated design changes against competition rules to keep late-stage modifications compliant.'
     ],
     fullDetails: [
-      'Performed detailed PCB assembly with thermal paste control, flux management, and microscope verification for solder joint reliability.',
-      'Integrated the OSD3358-SM-RED SiP and configured boot pathways for stable early-stage startup.',
-      'Validated AM335x bring-up using open-source software workflows and structured debugging checkpoints.'
+      'Partnered with the Structures Subteam to refine CAD layouts that balanced structural integrity with competition constraints.',
+      'Assembled airframe components, tested servos, and built wiring harnesses to support reliable system integration.',
+      'Produced tail-structure parts using a CO2 laser cutter and cut carbon-fiber rods to spec for final assembly.',
+      'Reviewed alteration proposals and ensured updated modifications aligned with competition requirements.'
     ],
-    categories: ['Software', 'Mechatronics', 'Defense'],
-    tags: ['Embedded Linux', 'PCB Assembly', 'Reflow Soldering', 'AM335x', 'GitHub'],
-    visual: 'from-[#f4f7ff] to-sky-100',
-    coverImage: cubesatReflowPhoto,
-    coverAlt: 'Reflow-soldered CubeSat flight computer PCB',
+    categories: ['UAS', 'Mechanical Design', 'Manufacturing'],
+    tags: ['Laser Cutting', 'Mechanical Assembly', 'Teamwork', 'CAD', 'Wiring Harnesses', 'Servo Testing'],
+    visual: 'from-[#edf3ff] to-[#dfeaff]',
+    coverImage: saeFullGroupPhoto,
+    coverAlt: 'Full SAE Aero Design group photo after flight',
     media: [
       {
-        src: cubesatReflowPhoto,
-        alt: 'Reflow-soldered CubeSat flight computer PCB',
-        caption: 'Reflow-soldered CubeSat flight computer PCB'
+        src: saeMovingPlanePhoto,
+        alt: 'SAE Aero Design aircraft in motion on competition day',
+        caption: 'SAE Aero Design aircraft in motion on competition day'
       },
       {
-        src: cubesatSmdPastePhoto,
-        alt: 'Placing SMD components onto solder paste on the Oresat board',
-        caption: 'Placing SMD components onto solder paste on the Oresat board'
+        src: saeGroupPhoto,
+        alt: 'SAE Aero Design group photo on competition day',
+        caption: 'SAE Aero Design team on competition day'
       },
       {
-        src: cubesatFramePhoto,
-        alt: '3D-printed CubeSat frame',
-        caption: '3D-printed CubeSat frame'
-      },
-      {
-        src: cubesatGroupPhoto,
-        alt: 'CubeSat team photo at showcase',
-        caption: 'CubeSat team photo at the project showcase'
+        src: saeFullGroupPhoto,
+        alt: 'Full SAE Aero Design group photo after flight',
+        caption: 'Full team photo after flight'
       }
     ]
   },
@@ -467,46 +472,98 @@ export const projects: ProjectItem[] = [
     ]
   },
   {
-    slug: 'sae-aero-design',
-    title: 'SAE Aero Design',
-    role: 'Structures Subteam Member',
-    organization: 'SAE Aero Design',
-    dates: 'Competition Season',
+    slug: 'cubesat-development',
+    title: 'CubeSat Development',
+    role: 'Embedded Systems Lead',
+    organization: 'Florida Institute of Technology',
+    dates: 'Aug 2025 - Present',
     description:
-      'Structural design support and hands-on fabrication for a competition aircraft, with a focus on compliance and build quality.',
+      'Flight-computer assembly and embedded bring-up for a CubeSat, from PCB build through processor configuration.',
     overview:
-      'On the Structures Subteam, I helped drive CAD decisions and built hardware that stayed compliant, manufacturable, and test-ready.',
+      'I built and validated the CubeSat flight computer, handling PCB assembly, processor bring-up, and early embedded setup for mission readiness.',
     bullets: [
-      'Collaborated on structural CAD design to satisfy competition requirements and keep geometry manufacturable.',
-      'Led hands-on assembly and fabrication, including servo testing, harness routing, carbon-fiber rod cutting, and CO2 laser-cut tail components.',
-      'Validated design changes against competition rules to keep late-stage modifications compliant.'
+      'Hand-assembled and reflow-soldered the flight computer PCB with microscope inspection and fine-pitch alignment.',
+      'Integrated the Octavo OSD3358-SM-RED SiP, configured bootloaders, and validated initial AM335x bring-up using open-source tools.'
     ],
     fullDetails: [
-      'Partnered with the Structures Subteam to refine CAD layouts that balanced structural integrity with competition constraints.',
-      'Assembled airframe components, tested servos, and built wiring harnesses to support reliable system integration.',
-      'Produced tail-structure parts using a CO2 laser cutter and cut carbon-fiber rods to spec for final assembly.',
-      'Reviewed alteration proposals and ensured updated modifications aligned with competition requirements.'
+      'Performed detailed PCB assembly with thermal paste control, flux management, and microscope verification for solder joint reliability.',
+      'Integrated the OSD3358-SM-RED SiP and configured boot pathways for stable early-stage startup.',
+      'Validated AM335x bring-up using open-source software workflows and structured debugging checkpoints.'
     ],
-    categories: ['UAS', 'Mechanical Design', 'Manufacturing'],
-    tags: ['Laser Cutting', 'Mechanical Assembly', 'Teamwork', 'CAD', 'Wiring Harnesses', 'Servo Testing'],
-    visual: 'from-[#edf3ff] to-[#dfeaff]',
-    coverImage: saeFullGroupPhoto,
-    coverAlt: 'Full SAE Aero Design group photo after flight',
+    categories: ['Software', 'Mechatronics', 'Defense'],
+    tags: ['Embedded Linux', 'PCB Assembly', 'Reflow Soldering', 'AM335x', 'GitHub'],
+    visual: 'from-[#f4f7ff] to-sky-100',
+    coverImage: cubesatReflowPhoto,
+    coverAlt: 'Reflow-soldered CubeSat flight computer PCB',
     media: [
       {
-        src: saeMovingPlanePhoto,
-        alt: 'SAE Aero Design aircraft in motion on competition day',
-        caption: 'SAE Aero Design aircraft in motion on competition day'
+        src: cubesatReflowPhoto,
+        alt: 'Reflow-soldered CubeSat flight computer PCB',
+        caption: 'Reflow-soldered CubeSat flight computer PCB'
       },
       {
-        src: saeGroupPhoto,
-        alt: 'SAE Aero Design group photo on competition day',
-        caption: 'SAE Aero Design team on competition day'
+        src: cubesatSmdPastePhoto,
+        alt: 'Placing SMD components onto solder paste on the Oresat board',
+        caption: 'Placing SMD components onto solder paste on the Oresat board'
       },
       {
-        src: saeFullGroupPhoto,
-        alt: 'Full SAE Aero Design group photo after flight',
-        caption: 'Full team photo after flight'
+        src: cubesatFramePhoto,
+        alt: '3D-printed CubeSat frame',
+        caption: '3D-printed CubeSat frame'
+      },
+      {
+        src: cubesatGroupPhoto,
+        alt: 'CubeSat team photo at showcase',
+        caption: 'CubeSat team photo at the project showcase'
+      }
+    ]
+  },
+  {
+    slug: 'robotic-arm-vision-pick',
+    title: 'Robotic Arm Vision Pick-and-Place',
+    role: 'Co-Designer & Systems Integrator',
+    organization: 'Personal Project',
+    dates: 'Mar 2026 - Present',
+    cardDates: 'In Progress',
+    description:
+      'Designed and built a 3D-printed robotic arm with vision guidance for object pickup and placement.',
+    overview:
+      'In a two-person team, I co-designed the arm in Onshape, animated the assembly motion, and integrated the vision and control stack for AprilTag-guided pickup.',
+    bullets: [
+      'Modeled the arm in Onshape, animated joint motion in the assembly, and 3D-printed all components for final assembly.',
+      'Integrated a wrist-mounted camera and AprilTag recognition on a Raspberry Pi to detect targets.',
+      'Wired the robot and developed software to coordinate the Raspberry Pi vision pipeline with a Duet3D motion controller.'
+    ],
+    fullDetails: [
+      'Co-designed the full arm in Onshape, validating joint ranges and motion sequencing through assembly animations.',
+      'Built and assembled 3D-printed components, mounting a wrist camera for close-range target detection.',
+      'Implemented AprilTag-based detection on a Raspberry Pi and linked it with Duet3D motion control to drive pick-and-place moves.',
+      'Project remains in progress as of March 2026 while I continue refining integration and automation behavior.'
+    ],
+    categories: ['Mechatronics', 'Computer Vision', 'Mechanical Design', 'Software'],
+    tags: ['Onshape', '3D Printing', 'Raspberry Pi', 'AprilTag', 'Duet3D', 'Motion Control'],
+    visual: 'from-[#eef7ff] to-[#d9ecff]',
+    coverImage: robotArmCADPhoto,
+    coverAlt: 'Robot arm CAD model',
+    coverFit: 'contain',
+    media: [
+      {
+        src: robotArmCADPhoto,
+        alt: 'Robot arm CAD model',
+        caption: 'CAD model of the robotic arm',
+        layout: 'landscape'
+      },
+      {
+        src: robotArmBuildPhoto,
+        alt: 'Robot arm assembled build',
+        caption: 'Completed robotic arm assembly',
+        layout: 'landscape'
+      },
+      {
+        src: robotArmControlPhoto,
+        alt: 'Duet board with Raspberry Pi for the robot arm',
+        caption: 'Duet board with Raspberry Pi control stack',
+        layout: 'landscape'
       }
     ]
   },
@@ -549,6 +606,53 @@ export const projects: ProjectItem[] = [
     ]
   },
   {
+    slug: 'loc-iris-model-rocket',
+    title: 'Loc Iris Model Rocket',
+    role: 'Builder',
+    organization: 'Personal Project',
+    dates: 'Mar 2026 - Present',
+    cardDates: 'In Progress',
+    description:
+      'Built a Loc Iris model rocket to pursue NAR Level 1 high powered rocketry certification.',
+    overview:
+      'I assembled the rocket and reinforced the fins with fiberglass in preparation for upcoming certification launches.',
+    bullets: [
+      'Assembled the Loc Iris model rocket for NAR Level 1 certification preparation.',
+      'Fiberglassed the fins to improve reinforcement and durability.',
+      'Prepared the rocket for launch operations planned over the coming months.'
+    ],
+    fullDetails: [
+      'Built the rocket as a certification-focused project for NAR Level 1 high powered rocketry.',
+      'Applied fiberglass reinforcement to the fins to improve strength and flight durability.',
+      'Project remains in progress as of March 2026, with launch and certification attempts planned in the coming months.'
+    ],
+    categories: ['Mechanical Design', 'Manufacturing'],
+    tags: ['Model Rocketry', 'Fiberglassing', 'Assembly', 'Certification'],
+    visual: 'from-[#fff2e6] to-[#ffe0c6]',
+    coverImage: locIrisFinFiberglassingPhoto,
+    coverAlt: 'Fiberglassing the fins on the Loc Iris model rocket',
+    media: [
+      {
+        src: locIrisFinFiberglassingPhoto,
+        alt: 'Fiberglassing the fins on the Loc Iris model rocket',
+        caption: 'Fiberglass reinforcement on the fins',
+        layout: 'landscape'
+      },
+      {
+        src: locIrisDryfitAssemblyPhoto,
+        alt: 'Dry fit assembly of the Loc Iris rocket',
+        caption: 'Dry fit assembly of the rocket',
+        layout: 'portrait'
+      },
+      {
+        src: locIrisMotorMountAssemblyPhoto,
+        alt: 'Motor mount assembly of the Loc Iris rocket post epoxy',
+        caption: 'Motor mount assembly after epoxy',
+        layout: 'landscape'
+      }
+    ]
+  },
+  {
     slug: 'portfolio-website',
     title: 'Portfolio Website',
     role: 'Designer & Developer',
@@ -586,44 +690,6 @@ export const projects: ProjectItem[] = [
     ]
   },
   {
-    slug: 'arduino-speaker-box',
-    title: 'Arduino Speaker Box',
-    role: 'Designer & Builder',
-    organization: 'Personal Project',
-    dates: 'Personal Project',
-    description:
-      'Custom Bluetooth speaker box using an Arduino Uno, laser-cut wood construction, and an LED volume display.',
-    overview:
-      'I built a speaker system from component selection through final assembly, combining embedded control, fabrication, and clean hardware integration.',
-    bullets: [
-      'Used an Arduino Uno with a Bluetooth receiver for wireless audio control and system integration.',
-      'Laser-cut the wooden enclosure, laser-etched a top-panel design, and assembled the housing.',
-      'Soldered core electronics including speaker, power receiver, Arduino circuitry, and LED volume display.'
-    ],
-    fullDetails: [
-      'Assembled the enclosure and electronics layout with clean wiring and serviceable placement.',
-      'Integrated Bluetooth input and controller logic for responsive volume feedback.',
-      'Designed and fabricated custom wood components via laser cutting and etching for a finished build.'
-    ],
-    categories: ['Software', 'Mechatronics', 'Manufacturing'],
-    tags: ['Arduino Uno', 'Bluetooth', 'Laser Cutting', 'Laser Etching', 'Soldering', 'LED Integration'],
-    visual: 'from-[#e8f3ff] to-[#d9ebff]',
-    coverImage: speakerIsometricPhoto,
-    coverAlt: 'Arduino speaker box isometric view',
-    media: [
-      {
-        src: speakerIsometricPhoto,
-        alt: 'Arduino speaker box isometric view',
-        caption: 'Finished speaker box isometric view'
-      },
-      {
-        src: speakerTopDownPhoto,
-        alt: 'Top-down view of laser-cut speaker box top',
-        caption: 'Top-down view of the laser-cut top panel'
-      }
-    ]
-  },
-  {
     slug: 'menzi-muck-m220x-reverse-engineering',
     title: 'Menzi Muck M220x Reverse Engineering',
     role: 'CAD Modeling & Documentation',
@@ -646,7 +712,23 @@ export const projects: ProjectItem[] = [
     categories: ['Mechanical Design', 'Manufacturing'],
     tags: ['Reverse Engineering', 'CAD', 'Assembly Drawings', 'Mechanical Interfaces', 'Motion Constraints'],
     visual: 'from-[#edf5ff] to-[#dbe9ff]',
-    mediaPlaceholders: ['Subsystem CAD model image', 'Assembly drawing screenshot', 'Motion constraint study image']
+    coverImage: menziMuckOverviewDrawingPhoto,
+    coverAlt: 'Menzi Muck overview drawing',
+    coverFit: 'contain',
+    media: [
+      {
+        src: menziMuckOverviewDrawingPhoto,
+        alt: 'Menzi Muck overview drawing',
+        caption: 'Overview drawing of the Menzi Muck M220x',
+        layout: 'landscape'
+      },
+      {
+        src: menziMuckClawDrawingPhoto,
+        alt: 'Menzi Muck claw drawing',
+        caption: 'Claw subsystem drawing for the Menzi Muck M220x',
+        layout: 'landscape'
+      }
+    ]
   }
 ]
 
@@ -701,16 +783,6 @@ export const certifications: Credential[] = [
     issued: 'Oct 2025'
   },
   {
-    title: 'Simulink Onramp',
-    issuer: 'MathWorks',
-    issued: 'Oct 2025'
-  },
-  {
-    title: 'MATLAB Onramp',
-    issuer: 'MathWorks',
-    issued: 'Jul 2025'
-  },
-  {
     title: 'Commercial Assistance Towing Endorsement',
     issuer: 'U.S. Coast Guard',
     issued: 'Jul 2025'
@@ -722,18 +794,8 @@ export const certifications: Credential[] = [
     expires: 'Jul 2030'
   },
   {
-    title: 'OUPV 6-Pack USCG License',
-    issuer: 'U.S. Coast Guard',
-    issued: 'Feb 2023'
-  },
-  {
     title: 'TWIC',
     issuer: 'TSA',
-    issued: 'Feb 2023'
-  },
-  {
-    title: 'FCC Marine Radio Operator',
-    issuer: 'FCC',
     issued: 'Feb 2023'
   },
   {
@@ -770,19 +832,9 @@ export const awards: Award[] = [
     date: 'Aug 2025'
   },
   {
-    title: 'TKE Omicron Nu Chapter Scholarship (1st place recipient)',
+    title: 'TKE Omicron Nu Chapter Scholarship',
     issuer: 'Tau Kappa Epsilon',
     date: 'Apr 2025'
-  },
-  {
-    title: 'Top New Member 2023-2024',
-    issuer: 'Tau Kappa Epsilon',
-    date: 'Apr 2024'
-  },
-  {
-    title: 'Top TEKE Award 2023-2024',
-    issuer: 'Tau Kappa Epsilon',
-    date: 'Apr 2024'
   },
   {
     title: 'Fraternal Order of Police Scholarship',
@@ -798,11 +850,6 @@ export const awards: Award[] = [
     title: 'Eagle Scout',
     issuer: 'Boy Scouts of America',
     date: 'Dec 2022'
-  },
-  {
-    title: 'AP Scholar Award',
-    issuer: 'College Board',
-    date: 'Oct 2022'
   }
 ]
 

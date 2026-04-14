@@ -3,7 +3,7 @@ import { CertificationsList } from '../components/CertificationsList'
 import { Chip } from '../components/Chip'
 import { ContactRow } from '../components/ContactRow'
 import { EducationCard } from '../components/EducationCard'
-import { ExperienceCard } from '../components/ExperienceCard'
+import { ExperienceStack } from '../components/ExperienceStack'
 import { Navbar } from '../components/Navbar'
 import { ProjectCard } from '../components/ProjectCard'
 import { Section } from '../components/Section'
@@ -192,6 +192,26 @@ export function HomePage() {
         .map((item) => [item.company, { name: item.company, href: item.companyUrl }])
     ).values()
   )
+  const experienceGroups = [
+    {
+      id: 'sayville-ferry-service',
+      label: 'Sayville Ferry Service',
+      items: experience.filter((item) => item.company === 'Sayville Ferry Service Inc')
+    },
+    {
+      id: 'coastline-freight',
+      label: 'Coastline Freight',
+      items: experience.filter(
+        (item) =>
+          item.company === 'Coastline Freight' || item.company === 'Coastline Freight (Fire Island Seahorse)'
+      )
+    },
+    {
+      id: 'call-of-doody',
+      label: 'Call of Doody',
+      items: experience.filter((item) => item.company === 'Call of Doody')
+    }
+  ]
 
   return (
     <div ref={mainRef} className="relative min-h-screen bg-gradient-to-b from-[#f3e5cf] via-[#f8f7f3] to-[#e6f1ff] text-ink">
@@ -240,12 +260,14 @@ export function HomePage() {
                   >
                     {person.badge}
                   </p>
-                  <p
-                    className="reveal reveal--delay1 reveal--distance-sm inline-flex rounded-full border border-white/70 bg-white/60 px-6 py-2 text-xl font-semibold text-sky-700 shadow-soft backdrop-blur-sm md:text-2xl"
-                    data-animate
-                  >
-                    {person.secondaryBadge}
-                  </p>
+                  {person.secondaryBadge ? (
+                    <p
+                      className="reveal reveal--delay1 reveal--distance-sm inline-flex rounded-full border border-white/70 bg-white/60 px-6 py-2 text-xl font-semibold text-sky-700 shadow-soft backdrop-blur-sm md:text-2xl"
+                      data-animate
+                    >
+                      {person.secondaryBadge}
+                    </p>
+                  ) : null}
                 </div>
               </div>
               <div className="mx-auto mt-16 max-w-4xl">
@@ -392,11 +414,7 @@ export function HomePage() {
           </Section>
 
           <Section id="experience" title="Experience" description={siteContent.experienceDescription}>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-              {experience.map((item) => (
-                <ExperienceCard key={`${item.company}-${item.role}-${item.dates}`} item={item} />
-              ))}
-            </div>
+            <ExperienceStack groups={experienceGroups} />
 
             <div className="mt-8 grid grid-cols-1 gap-8">
               <Card className="space-y-5">
