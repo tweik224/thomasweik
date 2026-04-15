@@ -641,13 +641,13 @@ export const projects: ProjectItem[] = [
       {
         src: robotArmBuildPhoto,
         alt: 'Robot arm assembled build',
-        caption: 'Completed robotic arm assembly',
+        caption: 'In progress assembly',
         layout: 'landscape'
       },
       {
         src: robotArmControlPhoto,
         alt: 'Duet board with Raspberry Pi for the robot arm',
-        caption: 'Duet board with Raspberry Pi control stack',
+        caption: 'Raspberry Pi connected to Duet board In housing',
         layout: 'landscape'
       }
     ]
