@@ -26,6 +26,9 @@ import portfolioCoverPhoto from '../assets/PortfolioWebsiteCoverpage.jpeg'
 import portfolioBackendPhoto from '../assets/PortfolioWebsiteSampleBackendscreenshotwithcodex.jpeg'
 import menziMuckOverviewDrawingPhoto from '../assets/MenziMuckoverviewDrawing.jpeg'
 import menziMuckClawDrawingPhoto from '../assets/MenziMuckClawDrawing.jpeg'
+import gimbalFrontIsoPhoto from '../assets/Gimbal_Front_Iso.png'
+import gimbalBackIsoPhoto from '../assets/Gimbal_Back_Iso.png'
+import gimbalFrontSquarePhoto from '../assets/Gimbal_Front_Square.png'
 
 export type ProjectCategory =
   | 'Defense'
@@ -176,6 +179,11 @@ export const skills: SkillGroup[] = [
     items: ['SolidWorks', 'Fusion 360', 'Creo Parametric', 'Onshape', 'Jama', 'GD&T', 'FEA', 'Lightburn']
   },
   {
+    title: 'Microscopy & Characterization',
+    icon: 'mc',
+    items: ['STM', 'AFM', 'SEM', 'TEM', 'EDAX', 'Confocal Microscopy']
+  },
+  {
     title: 'Programming & Controls',
     icon: 'pc',
     items: [
@@ -316,6 +324,7 @@ export const leadership: ExperienceItem[] = [
     type: 'On-site',
     dates: 'Nov 2024 - Nov 2025',
     bullets: [
+      'Led the chapter to its first-ever Top TKE Chapter award, the highest national award a chapter can receive.',
       'Led a 44+ member organization while coordinating 7 executives and 8 committees.',
       'Raised $12,000+ total including $11,000 for St. Jude, the highest chapter fundraising ever and second-highest in Florida Tech Greek Life history.',
       'Earned 6 National Excellence Awards and 1 Honorable Mention.',
@@ -648,6 +657,59 @@ export const projects: ProjectItem[] = [
         src: robotArmControlPhoto,
         alt: 'Duet board with Raspberry Pi for the robot arm',
         caption: 'Raspberry Pi connected to Duet board In housing',
+        layout: 'landscape'
+      }
+    ]
+  },
+  {
+    slug: '3-axis-camera-tracking-gimbal',
+    title: '3-Axis Camera Tracking & Stabilization Gimbal',
+    role: 'Mechanical & Mechatronics Systems Designer',
+    organization: 'Independent Engineering Project',
+    dates: 'May 2026 - Present',
+    cardDates: '2026 - Present',
+    description:
+      'Designed and integrated a custom 3-axis mechatronic gimbal combining IMU-based stabilization, computer vision target tracking, and servo-driven actuation.',
+    overview:
+      'Developed a compact 3-axis camera gimbal from the mechanical architecture through controls integration, using a BNO055 IMU for orientation feedback and computer vision for autonomous target tracking. Because the prototype used low-cost micro servos with limited torque capacity, the mechanical design emphasized efficient load paths, bearing-supported joints, mass distribution, and reduced moment loads on the actuators.',
+    bullets: [
+      'Designed a custom 3-axis pan, tilt, and roll mechanism around compact servo actuators and bearing-supported rotating joints.',
+      'Integrated BNO055 orientation feedback for real-time yaw, pitch, and roll stabilization.',
+      'Developed OpenCV-based vision tracking to detect a target and generate pan/tilt corrections from camera position error.',
+      'Implemented serial communication between an Orange Pi vision computer and Arduino-based servo controller.',
+      'Iteratively refined the mechanical structure and actuator interfaces to reduce loading, improve stiffness, and minimize servo jitter.'
+    ],
+    fullDetails: [
+      'Created the gimbal structure in Onshape and manufactured iterative prototypes using FDM 3D printing, refining geometry for stiffness, compact packaging, bearing support, servo mounting, and reduced rotational inertia.',
+      'Engineered the mechanical architecture around the torque limitations of low-cost micro servos, using bearing-supported axes, controlled load paths, reduced moment arms, and lightweight structures to minimize radial loading and actuator torque requirements.',
+      'Developed a compact mechanical interface between servo outputs and bearing-supported gimbal axes, allowing structural loads to be carried by the frame and bearings rather than relying entirely on the servo output shafts.',
+      'Integrated a BNO055 9-DOF IMU over I2C and established the physical-to-sensor axis mapping required to convert measured orientation into yaw, pitch, and roll compensation commands.',
+      'Built an embedded control architecture using an Arduino Uno for servo actuation and an Orange Pi 4 Pro for OpenCV image processing, connected through serial communication.',
+      'Implemented camera-based target detection and proportional position correction using image-space error relative to the center of the video frame, enabling autonomous pan and tilt tracking.'
+    ],
+    categories: ['Mechatronics', 'Computer Vision', 'Mechanical Design', 'Software'],
+    tags: ['Onshape', 'OpenCV', 'Arduino', 'Orange Pi', 'BNO055 IMU', 'Embedded Controls', '3D Printing', 'Servo Actuation'],
+    visual: 'bg-[linear-gradient(135deg,#111827_0%,#1e3a5f_50%,#0f766e_100%)]',
+    coverImage: gimbalFrontIsoPhoto,
+    coverAlt: 'Custom three-axis camera gimbal with pan, tilt, and roll stabilization hardware',
+    coverFit: 'contain',
+    media: [
+      {
+        src: gimbalFrontIsoPhoto,
+        alt: 'Front isometric view of the custom three-axis camera gimbal',
+        caption: 'Front isometric view of the gimbal',
+        layout: 'landscape'
+      },
+      {
+        src: gimbalBackIsoPhoto,
+        alt: 'Back isometric view of the custom three-axis camera gimbal',
+        caption: 'Back isometric view of the gimbal',
+        layout: 'landscape'
+      },
+      {
+        src: gimbalFrontSquarePhoto,
+        alt: 'Front square view of the custom three-axis camera gimbal',
+        caption: 'Front square view of the gimbal',
         layout: 'landscape'
       }
     ]

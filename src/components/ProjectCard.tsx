@@ -8,10 +8,12 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const coverSizeClass = project.coverFit === 'contain' ? 'h-44 md:h-40' : 'h-36 md:h-32'
+
   return (
     <Card className="flex h-full flex-col space-y-0.5 p-4 md:p-5 hover:-translate-y-1 hover:shadow-lift">
       {project.coverImage ? (
-        <div className="h-36 overflow-hidden rounded-3xl border border-white/70 bg-white md:h-32">
+        <div className={`${coverSizeClass} overflow-hidden rounded-3xl border border-white/70 bg-white`}>
           <img
             src={project.coverImage}
             alt={project.coverAlt ?? `${project.title} cover`}

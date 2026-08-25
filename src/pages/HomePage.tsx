@@ -41,6 +41,7 @@ const skillAccentClasses = ['bg-sky-400', 'bg-sky-500', 'bg-[#3f8edb]', 'bg-[#2f
 const projectTileOrder = [
   'sae-aero-design',
   'robotic-arm-vision-pick',
+  '3-axis-camera-tracking-gimbal',
   'fpv-drone-build',
   'ares-muav-endurance-uav',
   'cubesat-development',
@@ -393,7 +394,7 @@ export function HomePage() {
 
           <div ref={skillsTriggerRef}>
             <Section id="skills" title="Skills" description={siteContent.skillsDescription}>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {skills.map((group, index) => (
                   <div
                     key={group.title}
